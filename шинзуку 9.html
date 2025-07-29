@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHINJUKU9 - Уличная мода из Токио</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #000;
+            --secondary: #e31e25;
+            --light: #f8f8f8;
+            --gray: #777;
+            --dark: #222;
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-family: 'Arial Black', sans-serif;
+            font-size: 28px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: var(--transition);
+            position: relative;
+            padding: 8px 0;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: var(--transition);
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .header-icons {
+            display: flex;
+            align-items: center;
+        }
+        
+        .header-icons a {
+            color: white;
+            margin-left: 20px;
+            font-size: 18px;
+            position: relative;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .header-icons a:hover {
+            color: var(--secondary);
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--secondary);
+            color: white;
+            font-size: 12px;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1601924638867-3a6de6b7a500?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1500&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--secondary);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 30px;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+            border: 2px solid var(--secondary);
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(227, 30, 37, 0.3);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+            margin-left: 15px;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+        
+        /* Categories Section */
+        .section {
+            padding: 80px 5%;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--secondary);
+        }
+        
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .category-card {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            height: 300px;
+            cursor: pointer;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .category-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .category-card:hover .category-img {
+            transform: scale(1.05);
+        }
+        
+        .category-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 20px;
+            color: white;
+        }
+        
+        .category-overlay h3 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        
+        /* Featured Products */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .product-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-category {
+            color: var(--secondary);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        
+        .product-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .product-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .add-to-cart {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+        
+        .add-to-cart i {
+            margin-right: 8px;
+        }
+        
+        .add-to-cart:hover {
+            background: var(--secondary);
+        }
+        
+        .wishlist {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .wishlist:hover {
+            background: #ffecec;
+            color: var(--secondary);
+            border-color: var(--secondary);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 5% 30px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .footer-col h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--secondary);
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #333;
+            color: white;
+            transition: var(--transition);
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        .social-links a:hover {
+            background: var(--secondary);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            color: #777;
+            font-size: 14px;
+            border-top: 1px solid #333;
+            margin-top: 40px;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            overflow: auto;
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 800px;
+            position: relative;
+            animation: modalopen 0.4s;
+        }
+        
+        @keyframes modalopen {
+            from {opacity: 0; transform: translateY(-50px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+        
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #aaa;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: var(--secondary);
+        }
+        
+        .cart-items {
+            margin: 20px 0;
+        }
+        
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-item-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .cart-item-img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        
+        .cart-item-details h4 {
+            margin-bottom: 5px;
+        }
+        
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 1px solid #ddd;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .quantity-btn:hover {
+            background: #f1f1f1;
+        }
+        
+        .remove-item {
+            color: var(--secondary);
+            cursor: pointer;
+            font-size: 18px;
+            margin-left: 15px;
+        }
+        
+        .cart-total {
+            text-align: right;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        
+        .checkout-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .checkout-btn:hover {
+            background: #c51118;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-btns {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+            }
+            
+            .modal-content {
+                width: 95%;
+                padding: 15px;
+            }
+        }
+        
+        /* Photo Frames */
+        .photo-frame {
+            border: 10px solid #000;
+            background: #fff;
+            padding: 5px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin: 20px auto;
+            max-width: 500px;
+        }
+        
+        .photo-frame img {
+            width: 100%;
+            display: block;
+        }
+        
+        .photo-caption {
+            text-align: center;
+            padding: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            background: #000;
+            color: #fff;
+        }
+        
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .photo-container {
+            background: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .photo-container h3 {
+            text-align: center;
+            margin-bottom: 15px;
+            color: var(--secondary);
+            font-size: 22px;
+        }
+        
+        /* Share Section */
+        .share-section {
+            background: var(--dark);
+            padding: 50px 0;
+            text-align: center;
+            color: white;
+        }
+        
+        .share-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .share-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .share-description {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .share-link-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .share-link {
+            background: white;
+            color: var(--dark);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .share-link i {
+            color: var(--secondary);
+        }
+        
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .share-btn {
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            border: none;
+        }
+        
+        .share-btn.vk {
+            background: #4a76a8;
+            color: white;
+        }
+        
+        .share-btn.telegram {
+            background: #0088cc;
+            color: white;
+        }
+        
+        .share-btn.whatsapp {
+            background: #25D366;
+            color: white;
+        }
+        
+        .share-btn.email {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .share-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="header-container">
+            <div class="logo" id="logo">SHINJUKU<span>9</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active" id="home-link">Главная</a></li>
+                    <li><a href="#catalog" id="catalog-link">Каталог</a></li>
+                    <li><a href="#new" id="new-link">Новинки</a></li>
+                    <li><a href="#photos" id="photos-link">Фото</a></li>
+                    <li><a href="#footer" id="contacts-link">Контакты</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                <a id="search-btn"><i class="fas fa-search"></i></a>
+                <a id="user-btn"><i class="fas fa-user"></i></a>
+                <a id="cart-btn">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1>Уличный стиль из Токио</h1>
+            <p>SHINJUKU9 - это уникальное сочетание японской эстетики и современной уличной моды. Коллекции, созданные для тех, кто не боится выделяться.</p>
+            <div class="hero-btns">
+                <a href="#catalog" class="btn" id="catalog-btn">Смотреть коллекцию</a>
+                <a href="#new" class="btn btn-outline" id="new-arrivals-btn">Новые поступления</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photos Section -->
+    <section class="section" id="photos">
+        <div class="section-title">
+            <h2>Фото Коллекции</h2>
+        </div>
+        
+        <div class="photo-grid">
+            <div class="photo-container">
+                <h3>Smoking Kills Sadness</h3>
+                <div class="photo-frame">
+                    <div class="photo-caption">Smoking kills sadness</div>
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500' viewBox='0 0 500 500'%3E%3Crect width='500' height='500' fill='%23333'/%3E%3Ctext x='50%25' y='40%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-size='40' fill='%23fff'%3ESmoking kills%3C/text%3E%3Ctext x='50%25' y='60%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-size='40' fill='%23e31e25'%3Esadness%3C/text%3E%3C/svg%3E" alt="Smoking kills sadness">
+                </div>
+            </div>
+            
+            <div class="photo-container">
+                <h3>HQ999Day</h3>
+                <div class="photo-frame">
+                    <div class="photo-caption">by Mycricket</div>
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500' viewBox='0 0 500 500'%3E%3Crect width='500' height='500' fill='%23e31e25'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-size='50' fill='%23000' font-weight='bold'%3EHQ999Day%3C/text%3E%3Ctext x='50%25' y='70%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-size='30' fill='%23fff'%3Eby Mycricket%3C/text%3E%3C/svg%3E" alt="HQ999Day by Mycricket">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="section" id="catalog">
+        <div class="section-title">
+            <h2>Категории</h2>
+        </div>
+        <div class="categories">
+            <div class="category-card" data-category="tops">
+                <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Верхняя одежда" class="category-img">
+                <div class="category-overlay">
+                    <h3>Верх</h3>
+                    <p>Футболки, рубашки, худи</p>
+                </div>
+            </div>
+            <div class="category-card" data-category="bottoms">
+                <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Брюки" class="category-img">
+                <div class="category-overlay">
+                    <h3>Низ</h3>
+                    <p>Брюки, джинсы, шорты</p>
+                </div>
+            </div>
+            <div class="category-card" data-category="outerwear">
+                <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Верхняя одежда" class="category-img">
+                <div class="category-overlay">
+                    <h3>Верхняя одежда</h3>
+                    <p>Куртки, пальто, ветровки</p>
+                </div>
+            </div>
+            <div class="category-card" data-category="accessories">
+                <img src="https://images.unsplash.com/photo-1591561954557-26941169b49e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1474&q=80" alt="Аксессуары" class="category-img">
+                <div class="category-overlay">
+                    <h3>Аксессуары</h3>
+                    <p>Сумки, головные уборы, ремни</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="section" id="new" style="background-color: #f1f1f1;">
+        <div class="section-title">
+            <h2>Новые поступления</h2>
+        </div>
+        <div class="products">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80" alt="Hoodie Street" class="product-img">
+                <div class="product-info">
+                    <div class="product-category">Худи</div>
+                    <h3 class="product-title">Худи "Street Samurai"</h3>
+                    <div class="product-price">5 490 ₽</div>
+                    <div class="product-actions">
+                        <button class="add-to-cart" data-id="1" data-name="Худи Street Samurai" data-price="5490" data-image="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80"><i class="fas fa-shopping-bag"></i> В корзину</button>
+                        <div class="wishlist"><i class="far fa-heart"></i></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 2 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1636&q=80" alt="Cargo Pants" class="product-img">
+                <div class="product-info">
+                    <div class="product-category">Брюки</div>
+                    <h3 class="product-title">Карго "Urban Tactical"</h3>
+                    <div class="product-price">6 990 ₽</div>
+                    <div class="product-actions">
+                        <button class="add-to-cart" data-id="2" data-name="Карго Urban Tactical" data-price="6990" data-image="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1636&q=80"><i class="fas fa-shopping-bag"></i> В корзину</button>
+                        <div class="wishlist"><i class="far fa-heart"></i></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 3 -->
+            <div class="product-card">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500' viewBox='0 0 500 500'%3E%3Crect width='500' height='500' fill='%23333'/%3E%3Ctext x='50%25' y='40%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-size='40' fill='%23fff'%3ESmoking kills%3C/text%3E%3Ctext x='50%25' y='60%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-size='40' fill='%23e31e25'%3Esadness%3C/text%3E%3C/svg%3E" alt="Smoking kills sadness" class="product-img">
+                <div class="product-info">
+                    <div class="product-category">Футболки</div>
+                    <h3 class="product-title">Футболка "Smoking Kills"</h3>
+                    <div class="product-price">3 490 ₽</div>
+                    <div class="product-actions">
+                        <button class="add-to-cart" data-id="5" data-name="Футболка Smocking Kills" data-price="3490" data-image="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500' viewBox='0 0 500 500'%3E%3Crect width='500' height='500' fill='%23333'/%3E%3Ctext x='50%25' y='40%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-size='40' fill='%23fff'%3ESmoking kills%3C/text%3E%3Ctext x='50%25' y='60%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-size='40' fill='%23e31e25'%3Esadness%3C/text%3E%3C/svg%3E"><i class="fas fa-shopping-bag"></i> В корзину</button>
+                        <div class="wishlist"><i class="far fa-heart"></i></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 4 -->
+            <div class="product-card">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500' viewBox='0 0 500 500'%3E%3Crect width='500' height='500' fill='%23e31e25'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-size='50' fill='%23000' font-weight='bold'%3EHQ999Day%3C/text%3E%3Ctext x='50%25' y='70%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-size='30' fill='%23fff'%3Eby Mycricket%3C/text%3E%3C/svg%3E" alt="HQ999Day by Mycricket" class="product-img">
+                <div class="product-info">
+                    <div class="product-category">Футболки</div>
+                    <h3 class="product-title">Футболка "HQ999Day"</h3>
+                    <div class="product-price">3 290 ₽</div>
+                    <div class="product-actions">
+                        <button class="add-to-cart" data-id="6" data-name="Футболка HQ999Day" data-price="3290" data-image="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500' viewBox='0 0 500 500'%3E%3Crect width='500' height='500' fill='%23e31e25'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-size='50' fill='%23000' font-weight='bold'%3EHQ999Day%3C/text%3E%3Ctext x='50%25' y='70%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-size='30' fill='%23fff'%3Eby Mycricket%3C/text%3E%3C/svg%3E"><i class="fas fa-shopping-bag"></i> В корзину</button>
+                        <div class="wishlist"><i class="far fa-heart"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Share Section -->
+    <section class="share-section" id="share">
+        <div class="share-container">
+            <h2 class="share-title">Поделитесь нашим магазином</h2>
+            <p class="share-description">Расскажите друзьям о SHINJUKU9 и получите скидку 10% на первую покупку</p>
+            
+            <div class="share-link-container">
+                <a href="#" class="share-link" id="shareable-link">
+                    <i class="fas fa-link"></i>
+                    shinjuku9.ru
+                </a>
+            </div>
+            
+            <div class="share-buttons">
+                <button class="share-btn vk" id="share-vk">
+                    <i class="fab fa-vk"></i> ВКонтакте
+                </button>
+                <button class="share-btn telegram" id="share-tg">
+                    <i class="fab fa-telegram"></i> Telegram
+                </button>
+                <button class="share-btn whatsapp" id="share-wa">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </button>
+                <button class="share-btn email" id="share-email">
+                    <i class="fas fa-envelope"></i> Email
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>SHINJUKU9</h3>
+                <p>Уличная мода, вдохновленная энергией Токио. Каждая вещь - это смелый эксперимент с формами, текстурами и культурными кодами.</p>
+                <div class="social-links">
+                    <a href="#" id="vk-link"><i class="fab fa-vk"></i></a>
+                    <a href="#" id="tg-link"><i class="fab fa-telegram"></i></a>
+                    <a href="#" id="insta-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" id="yt-link"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Магазин</h3>
+                <ul>
+                    <li><a href="#catalog">Каталог</a></li>
+                    <li><a href="#new">Новые поступления</a></li>
+                    <li><a href="#photos">Фото</a></li>
+                    <li><a href="#" id="specials-link">Специальные предложения</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Информация</h3>
+                <ul>
+                    <li><a href="#" id="about-link">О бренде</a></li>
+                    <li><a href="#" id="delivery-link">Доставка и оплата</a></li>
+                    <li><a href="#" id="return-link">Возврат и обмен</a></li>
+                    <li><a href="#" id="sizes-link">Размерная сетка</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Контакты</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Москва, ул. Арбат, 25</li>
+                    <li><i class="fas fa-phone"></i> +7 (999) 123-45-67</li>
+                    <li><i class="fas fa-envelope"></i> info@shinjuku9.ru</li>
+                    <li><i class="fas fa-clock"></i> Пн-Пт: 10:00 - 21:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 SHINJUKU9. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 style="text-align: center; margin-bottom: 20px;">Ваша корзина</h2>
+            <div class="cart-items" id="cart-items">
+                <!-- Cart items will be added here -->
+            </div>
+            <div class="cart-total" id="cart-total">
+                Итого: 0 ₽
+            </div>
+            <button class="checkout-btn">Оформить заказ</button>
+        </div>
+    </div>
+
+    <script>
+        // Cart functionality
+        let cart = [];
+        const cartBtn = document.getElementById('cart-btn');
+        const cartModal = document.getElementById('cart-modal');
+        const closeBtn = document.querySelector('.close');
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartTotal = document.getElementById('cart-total');
+        const cartCount = document.querySelector('.cart-count');
+        const addToCartBtns = document.querySelectorAll('.add-to-cart');
+        const checkoutBtn = document.querySelector('.checkout-btn');
+        const shareableLink = document.getElementById('shareable-link');
+        
+        // Set shareable link
+        shareableLink.href = window.location.href;
+        
+        // Open cart modal
+        cartBtn.addEventListener('click', () => {
+            cartModal.style.display = 'block';
+            updateCartDisplay();
+        });
+        
+        // Close cart modal
+        closeBtn.addEventListener('click', () => {
+            cartModal.style.display = 'none';
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === cartModal) {
+                cartModal.style.display = 'none';
+            }
+        });
+        
+        // Add to cart functionality
+        addToCartBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const id = btn.dataset.id;
+                const name = btn.dataset.name;
+                const price = parseInt(btn.dataset.price);
+                const image = btn.dataset.image;
+                
+                // Check if item already in cart
+                const existingItem = cart.find(item => item.id === id);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({
+                        id,
+                        name,
+                        price,
+                        image,
+                        quantity: 1
+                    });
+                }
+                
+                // Update cart count
+                updateCartCount();
+                
+                // Show notification
+                showNotification(`Товар "${name}" добавлен в корзину!`);
+            });
+        });
+        
+        // Update cart count display
+        function updateCartCount() {
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            cartCount.style.display = totalItems > 0 ? 'flex' : 'none';
+        }
+        
+        // Update cart display in modal
+        function updateCartDisplay() {
+            cartItemsContainer.innerHTML = '';
+            
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p style="text-align: center; padding: 30px;">Ваша корзина пуста</p>';
+                cartTotal.textContent = 'Итого: 0 ₽';
+                return;
+            }
+            
+            let total = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <div class="cart-item-info">
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+                        <div class="cart-item-details">
+                            <h4>${item.name}</h4>
+                            <p>${item.price.toLocaleString()} ₽ × ${item.quantity}</p>
+                        </div>
+                    </div>
+                    <div class="cart-item-actions">
+                        <div class="quantity-btn minus" data-id="${item.id}">-</div>
+                        <span>${item.quantity}</span>
+                        <div class="quantity-btn plus" data-id="${item.id}">+</div>
+                        <div class="remove-item" data-id="${item.id}"><i class="fas fa-trash"></i></div>
+                    </div>
+                `;
+                
+                cartItemsContainer.appendChild(cartItem);
+            });
+            
+            cartTotal.textContent = `Итого: ${total.toLocaleString()} ₽`;
+            
+            // Add event listeners to quantity buttons
+            document.querySelectorAll('.quantity-btn.minus').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const id = btn.dataset.id;
+                    const item = cart.find(item => item.id === id);
+                    
+                    if (item.quantity > 1) {
+                        item.quantity--;
+                    } else {
+                        cart = cart.filter(item => item.id !== id);
+                    }
+                    
+                    updateCartDisplay();
+                    updateCartCount();
+                });
+            });
+            
+            document.querySelectorAll('.quantity-btn.plus').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const id = btn.dataset.id;
+                    const item = cart.find(item => item.id === id);
+                    item.quantity++;
+                    updateCartDisplay();
+                    updateCartCount();
+                });
+            });
+            
+            document.querySelectorAll('.remove-item').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const id = btn.dataset.id;
+                    cart = cart.filter(item => item.id !== id);
+                    updateCartDisplay();
+                    updateCartCount();
+                    showNotification('Товар удалён из корзины');
+                });
+            });
+        }
+        
+        // Checkout functionality
+        checkoutBtn.addEventListener('click', () => {
+            if (cart.length === 0) {
+                showNotification('Добавьте товары в корзину');
+                return;
+            }
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            showNotification(`Заказ оформлен на сумму ${total.toLocaleString()} ₽!`);
+            
+            // Reset cart
+            cart = [];
+            updateCartCount();
+            updateCartDisplay();
+            cartModal.style.display = 'none';
+        });
+        
+        // Show notification
+        function showNotification(message) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                bottom: 30px;
+                right: 30px;
+                background-color: var(--secondary);
+                color: white;
+                padding: 15px 25px;
+                border-radius: 8px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                z-index: 1000;
+                opacity: 0;
+                transform: translateY(20px);
+                transition: all 0.4s ease;
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Show notification
+            setTimeout(() => {
+                notification.style.opacity = '1';
+                notification.style.transform = 'translateY(0)';
+            }, 100);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 400);
+            }, 3000);
+        }
+        
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Wishlist functionality
+        document.querySelectorAll('.wishlist').forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.innerHTML = this.innerHTML.includes('far') ? 
+                    '<i class="fas fa-heart" style="color: #e31e25;"></i>' : 
+                    '<i class="far fa-heart"></i>';
+                
+                const productCard = this.closest('.product-card');
+                const productName = productCard.querySelector('.product-title').textContent;
+                
+                if (this.innerHTML.includes('fas')) {
+                    showNotification(`Товар "${productName}" добавлен в избранное!`);
+                }
+            });
+        });
+        
+        // Category cards functionality
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const category = this.dataset.category;
+                let categoryName = '';
+                
+                switch(category) {
+                    case 'tops':
+                        categoryName = 'Верхняя одежда';
+                        break;
+                    case 'bottoms':
+                        categoryName = 'Брюки и низ';
+                        break;
+                    case 'outerwear':
+                        categoryName = 'Куртки и пальто';
+                        break;
+                    case 'accessories':
+                        categoryName = 'Аксессуары';
+                        break;
+                }
+                
+                showNotification(`Вы выбрали категорию: ${categoryName}`);
+            });
+        });
+        
+        // Social links functionality
+        document.getElementById('vk-link').addEventListener('click', () => {
+            showNotification('Переход на страницу ВКонтакте');
+        });
+        
+        document.getElementById('tg-link').addEventListener('click', () => {
+            showNotification('Переход в Telegram-канал');
+        });
+        
+        document.getElementById('insta-link').addEventListener('click', () => {
+            showNotification('Переход в Instagram');
+        });
+        
+        document.getElementById('yt-link').addEventListener('click', () => {
+            showNotification('Переход на YouTube-канал');
+        });
+        
+        // Footer links functionality
+        document.getElementById('about-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            showNotification('Информация о бренде SHINJUKU9');
+        });
+        
+        document.getElementById('delivery-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            showNotification('Условия доставки и оплаты');
+        });
+        
+        document.getElementById('return-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            showNotification('Политика возврата и обмена');
+        });
+        
+        document.getElementById('sizes-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            showNotification('Размерная сетка SHINJUKU9');
+        });
+        
+        document.getElementById('specials-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            showNotification('Специальные предложения и акции');
+        });
+        
+        // Search functionality
+        document.getElementById('search-btn').addEventListener('click', () => {
+            const searchTerm = prompt('Введите поисковый запрос:');
+            if (searchTerm) {
+                showNotification(`Поиск: "${searchTerm}"`);
+            }
+        });
+        
+        // User functionality
+        document.getElementById('user-btn').addEventListener('click', () => {
+            showNotification('Личный кабинет');
+        });
+        
+        // Logo click functionality
+        document.getElementById('logo').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+            showNotification('Добро пожаловать в SHINJUKU9!');
+        });
+        
+        // Share buttons functionality
+        document.getElementById('share-vk').addEventListener('click', () => {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent('SHINJUKU9 - Уличная мода из Токио');
+            window.open(`https://vk.com/share.php?url=${url}&title=${title}`, '_blank');
+        });
+        
+        document.getElementById('share-tg').addEventListener('click', () => {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent('SHINJUKU9 - Уличная мода из Токио');
+            window.open(`https://t.me/share/url?url=${url}&text=${title}`, '_blank');
+        });
+        
+        document.getElementById('share-wa').addEventListener('click', () => {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent('Посмотрите магазин SHINJUKU9 - Уличная мода из Токио: ');
+            window.open(`https://wa.me/?text=${text}${url}`, '_blank');
+        });
+        
+        document.getElementById('share-email').addEventListener('click', () => {
+            const url = encodeURIComponent(window.location.href);
+            const subject = encodeURIComponent('Магазин SHINJUKU9');
+            const body = encodeURIComponent('Привет! Посмотри этот крутой магазин уличной одежды: ' + window.location.href);
+            window.location.href = `mailto:?subject=${subject}&body=${body}`;
+        });
+        
+        // Initialize cart count on page load
+        updateCartCount();
+    </script>
+</body>
+</html>
